@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Login.css') }}">
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+    <title>Login</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="book_ticket.html">Home</a></li>
+        <li>
+            <a href="#" id="trains-menu">Trains</a>
+            <ul id="trains-dropdown" style="display: none;">
+                <li><a href="book_ticket.html">Book Trains</a></li>
+                <li><a href="check_pnr.html">PNR Status</a></li>
+                <li><a href="train_status.html">Train Status</a></li>
+            </ul>
+        </li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+        {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="login-form" id="login-form">
+        <h1>Login</h1>
+        <form action="/login" method="post">
+            <label for="username"></label>
+            <input type="text" id="username" name="username" placeholder="Username" autofocus>
+            <label for="password"></label><br>
+            <input type="password" id="password" name="password" placeholder="Password"><br>
+            <input type="submit" value="Submit">
+        </form>
+        <p>Don't have an account? <a href="#" onclick="toggleSignUp()">Sign up</a></p>
+    </div>
+
+    <div class="signup-form" id="signup-form" style="display: none;">
+        <h2>Sign Up</h2>
+        <form action="/signup" method="post">
+            <label for="name"></label>
+            <input type="text" id="name" name="name" placeholder="Name"><br>
+            <label for="email"></label><br>
+            <input type="text" id="email" name="email" placeholder="Email" ><br>
+            <label for="new-username"></label><br>
+            <input type="text" id="username" name="username" placeholder="New Username"><br>
+            <label for="new-password"></label><br>
+            <input type="password" id="password" name="password" placeholder="New Password"><br>
+            <label for="confirm-password"></label><br>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password"><br>
+            <input type="submit" value="Sign Up">
+        </form>
+        <p>Already have an account? <a href="#" onclick="toggleSignUp()">Login</a></p>
+    </div>
+</div>
+
+<script>
+    var trainsMenu = document.getElementById("trains-menu");
+    var trainsDropdown = document.getElementById("trains-dropdown");
+
+    // Function to show the dropdown menu
+    function showDropdown() {
+        trainsDropdown.style.display = "block";
+    }
+
+    // Function to hide the dropdown menu
+    function hideDropdown() {
+        trainsDropdown.style.display = "none";
+    }
+
+    // Event listeners for mouse events
+    trainsMenu.addEventListener("mouseenter", showDropdown);
+    trainsMenu.addEventListener("mouseleave", hideDropdown);
+    trainsDropdown.addEventListener("mouseenter", showDropdown);
+    trainsDropdown.addEventListener("mouseleave", hideDropdown);
+</script>
+
+</body>
+</html>

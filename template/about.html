@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('book_ticket') }}">Home</a></li>
+            <li><a href="{{ url_for('show_users') }}">Users</a></li>
+            <!-- <li><a href="#">About</a></li> -->
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <header>
+            <h1>About Us</h1>
+        </header>
+        <section class="about-section">
+            <div class="about-content">
+                <p>Our railway management system is dedicated to revolutionizing the way people experience train travel. With a focus on efficiency, convenience, and customer satisfaction, we strive to provide a seamless booking experience for passengers while ensuring the smooth operation of railway services. Our platform offers a comprehensive suite of features, including easy ticket booking, real-time train status updates, and hassle-free PNR inquiries. By leveraging cutting-edge technology and a user-centric approach, we aim to simplify the complexities of train travel, making it accessible and enjoyable for everyone. Whether you're a frequent traveler or planning your first journey, trust our railway management system to deliver a reliable and delightful experience every time you ride the rails.</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

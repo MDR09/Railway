@@ -1,0 +1,130 @@
+body {
+	background-image: url(home\ page\ image.jpg);
+	background-size: cover;
+	margin: 0; /* Remove default body margin */
+}
+
+.container {
+	width: 600px;
+	height: 400px;
+	background-color: rgba(239, 231, 231, 0); /* Changed background color */
+	display: flex;
+	align-items: center; 
+	margin-top: 200px;
+	margin-left: 140px;
+	border-radius: 10px;
+}
+
+.login-form, .signup-form {
+	width: 350px;
+	padding: 20px;
+	border: 5px solid #ccc;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+	background-color: #ffffff00; /* Added background color */
+}
+
+.login-form h1, .signup-form h2 {
+	color: #fffefe;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.login-form label, .signup-form label {
+	color:white;
+	display:inline-block;
+	margin-bottom: 0px;
+}
+label[for="user"]{
+	color: white
+}
+
+.login-form input[type="text"], .login-form input[type="password"],
+.signup-form input[type="text"], .signup-form input[type="password"] {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+.login-form input[type="checkbox"], .signup-form input[type="checkbox"] {
+	margin-bottom: 0px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.login-form input[type="submit"], .signup-form input[type="submit"] {
+	width: 100%;
+	margin: auto;
+	padding: 10px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.login-form input[type="submit"]:hover, .signup-form input[type="submit"]:hover {
+	background-color: #45a049;
+}
+
+.login-form p, .signup-form p {
+	color: #ffffff;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.login-form a, .signup-form a {
+	color: #4CAF50;
+	text-decoration: none;
+}
+
+nav {
+	margin-top: 40px;
+	margin-left: 80px;
+	font-family: Arial, sans-serif;
+	background-color: rgba(239, 231, 231, 0.773);
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+nav ul li {
+	float: left;
+}
+
+nav ul li a {
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+nav ul li a:hover {
+	background-color: #4c4b4b;
+}
+#trains-dropdown {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+#trains-dropdown li {
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+#trains-dropdown li:hover {
+	background-color: #f1f1f1;
+}

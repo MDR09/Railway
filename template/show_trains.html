@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('book_ticket') }}">Home</a></li>
+            <!-- <li><a href="#">Users</a></li> -->
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+
+    <h1>User Table</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Ticket_id</th>
+                <th>From_location</th>
+                <th>To_location</th>
+                <th>Journey_date</th>
+                <th>Quota</th>
+                <th>Reservation Coach</th>
+                <th>PWD concession</th>
+                <th>TWAB</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for showtrain in showtrains %}
+            <tr>
+                <td>{{ showtrain.ticket_id }}</td>
+                <td>{{ showtrain.from_location }}</td>
+                <td>{{ showtrain.to_location }}</td>
+                <td>{{ showtrain.journey_date }}</td>
+                <td>{{ showtrain.quota }}</td>
+                <td>{{ showtrain.reservation_coach }}</td>
+                <td>{{ showtrain.pwd_concession }}</td>
+                <td>{{ showtrain.twab }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

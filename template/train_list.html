@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRCTC - Train Booking</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+        }
+        .header {
+            background-color: #0088cc;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .train-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .train-heading {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0088cc;
+            margin-bottom: 10px;
+        }
+        .train-details p {
+            margin: 5px 0;
+        }
+        .book-button-container {
+            display: flex;
+            align-items: center;
+        }
+        .book-button {
+            background-color: #0088cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+        .book-button:hover {
+            background-color: #005580;
+        }
+        .quota-price {
+            font-weight: bold;
+        }
+        .rupees-text {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>IRCTC - Train List</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for train in trains %}
+        <div class="col-md-6">
+            <div class="train-container">
+                <div class="train-heading">{{ train.train_name }} ({{ train.train_id }})</div>
+                <div class="train-details">
+                    <p><strong>Departure Time:</strong> {{ train.departure_time }}</p>
+                    <p><strong>Arrival Time:</strong> {{ train.arrival_time }}</p>
+                    <p><strong>Runs on:</strong> {{ train.runs_on }}</p>
+                    <p><strong>From:</strong> {{ train.from_location }}</p>
+                    <p><strong>To:</strong> {{ train.to_location }}</p>
+                    <p><strong>Quotas:</strong>
+                        <select class="quota-select form-control">
+                            <option value="{{ train.general_quota_price }}">General</option>
+                            <option value="{{ train.ac_quota_price }}">AC</option>
+                            <option value="{{ train.sleeper_quota_price }}">Sleeper</option>
+                        </select>
+                        <span class="quota-price"></span>
+                    </p>
+                </div>
+                <div class="book-button-container">
+                    <button class="book-button btn btn-primary">Book Ticket</button>
+                    <span class="rupees-text"></span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Function to handle booking when a book button is clicked
+    function bookTicket(event) {
+        const trainContainer = event.target.parentElement.parentElement;
+        const trainName = trainContainer.querySelector('.train-heading').innerText;
+        const selectedQuota = trainContainer.querySelector('.quota-select').value;
+        const selectedQuotaText = trainContainer.querySelector('.quota-select').selectedOptions[0].text;
+        const rupeesText = trainContainer.querySelector('.rupees-text');
+        rupeesText.innerText = selectedQuotaText + ': ' + selectedQuota + ' rupees';
+        rupeesText.style.display = 'inline'; // Show the rupees text
+        alert("Booking ticket for " + trainName + " with quota: " + selectedQuota + " rupees");
+        // Perform further actions such as redirecting to booking page
+        // window.location.href = "booking_page.html?train=" + trainName + "&quota=" + selectedQuota;
+    }
+
+    // Add click event listeners to all book buttons
+    $('.book-button').on('click', bookTicket);
+
+    // Add change event listener to all quota selects
+    $('.quota-select').on('change', function() {
+        const trainContainer = $(this).closest('.train-container');
+        const rupeesText = trainContainer.find('.rupees-text');
+        rupeesText.hide(); // Hide the rupees text when an option is changed
+    });
+</script>
+
+</body>
+</html>

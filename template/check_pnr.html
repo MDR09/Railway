@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check PNR Status</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0px;
+    }
+    nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 25vw;
+        margin: 0 auto;
+    }
+    h2 {
+        text-align: center;
+    }
+    input[type="text"],
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    .pnr-info {
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+    <nav>
+        <ul>
+          <li><a href="{{ url_for('book_ticket') }}">Home</a></li>
+          <!-- <li>
+             <a href="#" id="trains-menu">Trains</a>
+            <ul id="trains-dropdown" style="display: none;">
+                <li><a href="{{ url_for('book_ticket') }}">Book Trains</a></li>
+                <li><a href="{{ url_for('check_pnr') }}">PNR Status</a></li>
+                <li><a href="{{ url_for('train_status') }}">Train Status</a></li>
+        
+            </ul>
+        </li> -->
+          <!-- <li><a href="login.html">Login</a></li> -->
+          <li><a href="{{ url_for('show_users') }}">Users</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+          <li class="logout"><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+      </nav>
+<div class="container">
+    <h2>Check PNR Status</h2>
+    <form action="pnr_status.php" method="post">
+        <label for="pnr">Enter PNR:</label>
+        <input type="text" id="pnr" name="pnr" placeholder="Enter your PNR number" required>
+        <input type="submit" value="Check Status">
+    </form>
+</div>
+<div class="pnr-info">
+    <h3>What is PNR?</h3>
+    <p>PNR is short for 'Passenger Name Record'. It is a record in the database of Indian Railways against 
+        which the journey details for a passenger, or a group of passengers are stored. Centre for
+         Railway Information Systems (CRIS) also maintains information like current PNR status of the 
+         passengers, availability of berths in all classes for the next 60 days and static enquiries like 
+         Train Between Important Stations, Reservations Rules, Fares, Refund, and Rules etc.</p>
+    <p>When a reserved railway ticket is booked for a train in Indian Railways, all the details of passengers are
+         stored in relational database of centralized reservation system. These details are associated with a 
+         unique ten-digit number. This reference number is called PNR. PNR number is generally printed at the 
+         top left corner of the printed tickets. In case of the E-Ticket, it is mentioned at top in separate
+          cell. Passenger's personal information like name, age, gender etc. is saved in the database against
+           this reference number. It includes columns to store booking status and current status of the ticket. 
+           As we know every train has limited number of seats, sometime one may not get a confirmed reserved 
+           ticket. The current status of such a waitlist (W/L) ticket changes when there is any availability 
+           of reserved seats due to cancellation. This new current reservation status is generally known as PNR 
+           status.</p>
+</div>
+<div class="waitlist">
+    <h3>PNR Status Confirmation of different waitlist tickets</h3>
+    <p>GNWL (General Waiting List) - Highest confirmation chances</p>
+    <p>CKWL (Tatkal Waiting List) - GNWL tickets are preferred over Tatkal tickets hence CKWL Confirmation chances are low compared to GNWL</p>
+    <p>RLWL (Remote Location Waiting List) - Less chances of confirmation</p>
+    <p>PQWL (Pooled Quota Waiting List) - Less chances of confirmation, quota shared between several stations</p>
+    <p>RLGN (Remote Location General Waiting List) - Less chances of confirmation, when user books ticket under RLWL</p>
+    <p>RQWL (Request Waiting List) - Less chances of confirmation</p>
+    <p>RSWL (Roadside Station Waiting List) - Less chances of confirmation</p>
+    <p>
+        PNR is an abbreviation for 'Passenger Name Record'. As the term suggests, when you book a ticket, an entry 
+        is created in your name and a 10-digit unique id is allotted against your transaction. This is your ‘PNR 
+        number’. This id is the key to figure a variety of information about your train reservation. For instance, 
+        PNR status tells you if booking is confirmed or you’ll need to wait to get a seat if someone cancels their 
+        ticket. Apart from booking confirmation, you also get to know the details of the train coach and berth, the
+        fare paid by you, and the departure and arrival date and timelines. What’s more, you can check the PNR 
+        status using your smartphone too. Below explains how you could do the same. Using PNR Number to check 
+        ticket details: It’s super easy to check your PNR Status. To check your reservation status, enter the PNR
+        number in the search bar and the results of the search are mostly the following details:
+    </p>
+    <h4>Passenger and Ticket Details:</h4>
+    <p>
+        Information about the passenger such as their Name, Age, Gender, and Berth Preference
+        Information on what seating class or quota the ticket has been booked under
+        Ticket status showing CNF, RAC, or WL (these terms have been explained in detail below)
+        It mentions the coach and berth number
+    </p>
+    <h4>Payment and Train Details:</h4>
+    <p>
+        Reveals how much you paid for the ticket including the transaction id and the mode of payment
+        It also mentions the train number and name.The last bit of information will be about your 
+        boarding date and time and when the train is going to get you to your destination
+    </p>
+</div>
+</body>
+</html>

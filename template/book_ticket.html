@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='book_train.css') }}">
+<title>Book Train Ticket</title>
+
+</head>
+<body>
+    <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li>
+            <a href="#" id="trains-menu">Trains</a>
+            <ul id="trains-dropdown" style="display: none;">
+                <li><a href="{{ url_for('book_ticket') }}">Book Trains</a></li>
+                <li><a href="{{ url_for('check_pnr') }}">PNR Status</a></li>
+                <li><a href="{{ url_for('train_status') }}">Train Status</a></li>
+        
+            </ul>
+        </li>
+          <!-- <li><a href="login.html">Login</a></li> -->
+          <li><a href="{{ url_for('show_users') }}">Users</a></li>
+          <!-- <li><a href="{{ url_for('show_trains') }}">Show Trains</a></li> -->
+          <!-- <li><a href="{{ url_for('about') }}">About</a></li> -->
+          <li><a href="#">Services</a></li>
+          <li><a href="{{ url_for('contact') }}">Contact</a></li>
+          <li class="logout"><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+      </nav>
+
+<div class="container">
+    <h2>Book Train Ticket</h2>
+    <form action="#">
+        <label for="from">From:</label>
+        <input type="text" id="from" name="from" placeholder="Enter departure city" required>
+
+        <label for="to">To:</label>
+        <input type="text" id="to" name="to" placeholder="Enter destination city" required>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="quota">Quota:</label>
+        <select id="quota" name="quota" required>
+            <option value="">Select quota</option>
+            <option value="general">General</option>
+            <option value="tatkal">Tatkal</option>
+            <option value="premium">Premium</option>
+        </select>
+
+        <label for="coach">Reservation Coach:</label>
+        <select id="coach" name="coach" required>
+            <option value="">Select coach</option>
+            <option value="sleeper">Sleeper</option>
+            <option value="AC1">AC 1st Class</option>
+            <option value="AC2">AC 2nd Class</option>
+            <option value="AC3">AC 3rd Class</option>
+        </select>
+        <input type="checkbox" id="pwd" name="pwd">
+        <label for="pwd">Person with disabillity concession</label>
+        <input type="checkbox" id="TWAB" name="TWAB">
+        <label for="TWAB">Train with available berth</label>
+
+        <input type="submit" value="Show Trains">
+    </form>
+</div>
+<div class="bottom-section">
+  <h1 class="bottom-heading">Information</h1>
+  <div class="container">
+    <div class="box">
+      <img src="{{ url_for('static', filename='Vande_Bharat_train_image.avif') }}" alt="Image 1">
+      <h3>Everything You Need to Know About Clone Train</h3>
+      <a href="https://blog.railofy.com/2023/04/27/everything-you-need-to-know-about-clone-train/" target="_blank">Read more</a> 
+    </div>
+    <div class="box">
+      <img src="{{ url_for('static', filename='Box2.webp') }}" alt="Image 2">
+      <h3>Use IRCTC eCatering Service to Have Delicious ...</h3>
+      <a href="https://blog.railofy.com/2023/02/24/use-irctc-ecatering-service-to-have-delicious-food-on-trains/" target="_blank">Read more</a> 
+    </div>
+    <div class="box">
+      <img src="{{ url_for('static', filename='box 3.jpg') }}" alt="Image 3">
+      <h3>Tips & Tricks to Travel in Train at Lowest Fare</h3>
+      <a href="https://blog.railofy.com/2023/05/11/tips-tricks-to-travel-in-train-at-lowest-fare/" target="_blank">Read more</a> 
+    </div>
+  </div>
+</div>
+
+
+  <div class="container2">
+    <h1>Frequently Asked Questions</h1>
+  
+    <div class="faq-item">
+      <div class="question">Q. How do I book a train ticket?</div>
+      <div class="answer">
+        <p><strong>A.</strong> To book a train ticket, please follow the steps below:</p>
+        <ol>
+          <li><strong>Choose Your Destination and Date:</strong> Determine where you want to travel and when you want to go. Make sure to consider factors such as the time of day, any connections you might need to make, and the duration of the journey.</li>
+          <li><strong>Check Train Schedules:</strong> Look up the train schedules for your chosen route. You can usually find this information on the website of the train operator or through third-party travel websites.</li>
+          <li><strong>Select Your Class and Seat Preferences:</strong> Decide which class you want to travel in (e.g., first class, second class) and whether you have any preferences for seating, such as a window seat or an aisle seat.</li>
+          <li><strong>Book Your Ticket:</strong> Once you've chosen your train, you can book your ticket from this website.</li>
+          <li><strong>Payment:</strong> Once you've selected your ticket, you'll need to pay for it. Payment methods vary depending on the booking platform but typically include credit/debit cards, online payment systems.</li>
+          <li><strong>Receive Confirmation:</strong> After you've completed your booking and payment, you should receive a confirmation of your ticket. This confirmation may be sent to you via email if you booked online, or you may receive a printed ticket if you booked in person.</li>
+          <li><strong>Check for Any Additional Requirements:</strong> Depending on the train service and your destination, there may be additional requirements such as seat reservations or the need to present identification when boarding the train. Make sure to check for any such requirements before your journey.</li>
+          <li><strong>Boarding:</strong> On the day of your journey, arrive at the train station in advance of your departure time. Make sure to have your ticket and any necessary identification ready, and proceed to the platform to board your train.</li>
+        </ol>
+      </div>
+    </div>
+    
+  
+    <div class="faq-item">
+      <div class="question">Can I cancel my train ticket?</div>
+      <div class="answer">Yes, you can cancel your train ticket online through our website or mobile app, subject to cancellation charges.</div>
+    </div>
+  
+    <div class="faq-item">
+      <div class="question">What payment methods are accepted?</div>
+      <div class="answer">We accept various payment methods including credit/debit cards, net banking, and mobile wallets.</div>
+    </div>
+  
+    <div class="faq-item">
+      <div class="question">How can I check my PNR status?</div>
+      <div class="answer">You can check your PNR status online through our website or mobile app by entering your PNR number.</div>
+    </div>
+  
+  </div>
+  <div class="bottom-line">
+    <p><strong>For more information and to book train tickets, visit </strong> <a href="https://www.irctc.co.in/" target="_blank">IRCTC</a>.</p>
+  </div>
+<script>
+    var trainsMenu = document.getElementById("trains-menu");
+    var trainsDropdown = document.getElementById("trains-dropdown");
+
+    trainsMenu.addEventListener("mouseover", function() {
+        trainsDropdown.style.display = "block";
+    });
+
+    trainsMenu.addEventListener("mouseout", function() {
+        trainsDropdown.style.display = "none";
+    });
+
+    trainsDropdown.addEventListener("mouseover", function() {
+        trainsDropdown.style.display = "block";
+    });
+
+    trainsDropdown.addEventListener("mouseout", function() {
+        trainsDropdown.style.display = "none";
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Railways{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Login.css') }}">
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+    {% block additional_styles %}{% endblock %}
+    {% block additional_scripts %}{% endblock %}
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li>
+                <a href="#" id="trains-menu">Trains</a>
+                <ul id="trains-dropdown" style="display: none;">
+                    <li><a href="{{ url_for('book_ticket') }}">Book Trains</a></li>
+                    <li><a href="{{ url_for('check_pnr') }}">PNR Status</a></li>
+                    <li><a href="{{ url_for('train_status') }}">Train Status</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <script>
+        var trainsMenu = document.getElementById("trains-menu");
+        var trainsDropdown = document.getElementById("trains-dropdown");
+
+        trainsMenu.addEventListener("mouseover", function() {
+            trainsDropdown.style.display = "block";
+        });
+
+        trainsMenu.addEventListener("mouseout", function() {
+            trainsDropdown.style.display = "none";
+        });
+
+        trainsDropdown.addEventListener("mouseover", function() {
+            trainsDropdown.style.display = "block";
+        });
+
+        trainsDropdown.addEventListener("mouseout", function() {
+            trainsDropdown.style.display = "none";
+        });
+    </script>
+</body>
+</html>
